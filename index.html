@@ -1,0 +1,51 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine</title>
+    <link rel="stylesheet" href="valentine.css">
+</head>
+<body>
+    <div class="container" id="main-container">
+        <h1 class="valentine-title">Happy Valentine! 💖</h1>
+        <button class="btn" onclick="showGift()">Klik Aku!</button>
+        <div class="message" id="message">Happy Valentine ❤️</div>
+    </div>
+
+    <div class="gift-container" id="gift-container" style="display: none;">
+        <h1 class="valentine-title">Ini Hadiah Buat Kamu! 🎁</h1>
+        <img src="giftbox.png" alt="Gift Box" class="gift-box" onclick="showGiftMessage()">
+        <div class="gift-message" id="gift-message" style="display: none;">
+            Nanti coklatnya aku kasih kalo ketemu🥰
+            <button class="btn" onclick="redirectToNewPage()">Pencet Lagi</button>
+        </div>
+    </div>
+
+    <script>
+        function showGift() {
+            document.getElementById('main-container').style.display = 'none';
+            document.getElementById('gift-container').style.display = 'flex';
+        }
+
+        function showGiftMessage() {
+            document.getElementById('gift-message').style.display = 'block';
+        }
+
+        function redirectToNewPage() {
+            window.location.href = "nextpage.html";
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
